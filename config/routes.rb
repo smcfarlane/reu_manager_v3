@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
-  resources :grants
+
   devise_for :users
 
   namespace :reu_program do
     get 'dashboard' => 'dashboard#index'
+    resources :invoices, only: %i[new create show]
     resources :program_admins, except: %i[destroy] do
       member do
         get :lock
@@ -42,6 +43,19 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :grants do
+    collection do
+      get :new_program
+      post :create_program
+    end
+    member do
+      get :new_billing
+      post :create_billing
+    end
+  end
+
+  resources :charges
+
   get 'application' => 'applications#show_application'
   match 'application' => 'applications#update_application', via: %i[put patch]
   get 'recommenders' => 'applications#show_recommenders'
@@ -53,5 +67,12 @@ Rails.application.routes.draw do
 
   get 'closed' => 'welcome#closed'
   get 'thanks' => 'welcome#thanks'
+  
+  get 'tours' => 'welcome#tours'
+  get 'pricing' => 'welcome#pricing'
+  get 'create_grant' => 'grants#new_program'
+  get 'demo' => 'welcome#demo'
+  get 'support' => 'welcome#support'
   root to: 'welcome#index'
+  
 end

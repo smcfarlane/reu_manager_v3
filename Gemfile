@@ -1,0 +1,48 @@
+source 'https://rubygems.org'
+git_source(:github) { |repo| "https://github.com/#{repo}.git" }
+
+gem 'rails', '5.2.3'
+
+gem 'apartment'
+gem 'bootsnap'
+gem 'bootstrap'
+gem 'capistrano'
+gem 'coffee-rails'
+gem 'devise'
+gem 'dotenv-rails'
+gem 'flatpickr_rails'
+gem 'hamlit'
+gem 'jquery-rails'
+gem 'jquery-ui-rails'
+gem 'jsonb_accessor', '~> 1.0.0'
+gem 'kaminari'
+gem 'mini_magick', '~> 4.9'
+gem 'nested_form_fields'
+gem 'paper_trail'
+gem 'pg'
+gem 'prawn'
+gem 'rvm-capistrano', require: false
+gem 'sassc-rails'
+gem 'simple_form'
+gem 'tzinfo-data'
+gem 'uglifier'
+gem 'webpacker'
+gem 'whenever', require: false
+
+# development and test gems
+group :development, :test do
+  gem 'faker'
+  gem 'pry'
+end
+
+group :development do
+  gem 'web-console'
+end
+
+group :test do
+  gem 'database_cleaner'
+  gem 'factory_bot_rails'
+  gem 'rspec-rails'
+  gem 'timecop'
+end
+
